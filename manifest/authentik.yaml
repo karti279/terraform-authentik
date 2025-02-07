@@ -80,23 +80,4 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 9000
-
----
-
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: authentik-ingress
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-spec:
-  rules:
-  - http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: authentik-service
-            port:
-              number: 80
+  type: LoadBalancer
